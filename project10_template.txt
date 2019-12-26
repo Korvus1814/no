@@ -1,0 +1,74 @@
+MCS-177 Project 10: Snake (Fall 2019)
+Names: Jacob Korver, Jacob Krussel
+
+**************************************
+Helper functions
+**************************************
+create_segment: takes a color and a position, and returns a Turtle object that displays as a circle of the given color at the given position (used for both the Snake and Apple classes).
+
+define_keys: takes a SnakeGame object (game) and a Snake object (snake). Binds keys so that pressing the return key calls the function game.play, and pressing the arrow keys call the functions snake.go_up,…,snake.go_left.
+
+draw_boundary: draws the boundary for the snake game.
+
+**************************************
+SnakeGame class
+**************************************
+Member variables:
+snake (Snake)
+apple (Apple)
+score_board (ScoreBoard)
+
+Member functions:
+constructor: draws the boundary for the snake window, initializes the snake, apple, and score_board, and calls the define_keys function to bind keys.
+play: while the snake is alive, move the snake forward (include delay to keep speed manageable). If the snake has hit the wall or hit itself, the snake is no longer alive. reset the score, reset the snake, and move the apple. If the snake has found the food, move the apple, add a segment to the snake, and add one to the score. Finally, display the updated scoreboard.
+
+**************************************
+Apple class
+**************************************
+Member variables:
+position (int, int)
+
+
+Member functions:
+constructor: creates a Turtle object 'apple' 
+move: moves the apple to a random position on screen
+getPosition: returns the current position of the Apple
+
+
+
+**************************************
+Snake class
+**************************************
+Member variables:
+front (Turtle)
+body (list of Turtle)
+direction (string)
+
+Member functions:
+constructor: initializes front using the create_segment function, making a black segment at (0,0). Initializes body to the empty list. Initializes direction to the string “stop”.
+add_segment: uses the create_segment function to make a grey segment at the same position as the front of the snake, and appends this segment to body.
+go_right: changes the direction of the snake to “right”, as long as the current direction isn’t “left”.
+go_left: changes the direction of the snake to “left”, as long as the current direction isn’t “right”.
+go_down: changes the direction of the snake to “down”, as long as the current direction isn’t “up”.
+go_up: changes the direction of the snake to “up”, as long as the current direction isn’t “down”.
+get_position: returns the position of the snake
+move: moves the snake in the current direction
+
+
+**************************************
+ScoreBoard class
+**************************************
+Member variables:
+pen (Turtle)
+current (int)
+high (int)
+
+Member functions:
+constructor: creates a turtle object 'pen' and draws an empty scoreboard
+display_score: displays the player's current score
+add_current: adds one to the current score
+new_high: sets high equal to current
+
+
+
+
